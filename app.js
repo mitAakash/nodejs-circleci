@@ -8,12 +8,16 @@ async function fetchData() {
     return { id: 1, name: 'John', email: 'john@example.com' };
   }
   
-  function processResult(data) {
-    // Process data and return a result
-    // Example:
-    // return `Hello, ${data.name} (${data.email})!`;
-    return `Hello, ${data.name} (${data.email})!`;
+  // app.js
+
+function processResult(data) {
+    const name = data.name || '';
+    const email = data.email || '';
+    return `Hello, ${name} (${email})!`;
   }
+  
+  module.exports = { fetchData, processResult };
+  
   
   module.exports = { fetchData, processResult };
   
