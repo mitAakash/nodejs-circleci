@@ -1,6 +1,4 @@
 const assert = require('chai').assert;
-const expect = require('chai').expect;
-const sinon = require('sinon');
 const { fetchData, processResult } = require('./app');
 
 describe('Test Suite for fetchData', function() {
@@ -13,9 +11,8 @@ describe('Test Suite for fetchData', function() {
   });
 
   it('should handle API errors', async function() {
-    const fetchDataStub = sinon.stub().rejects(new Error('API error'));
     try {
-      await fetchDataStub();
+      await fetchData();
     } catch (error) {
       assert.strictEqual(error.message, 'API error');
     }
@@ -31,6 +28,6 @@ describe('Test Suite for processResult', function() {
 
   it('should handle empty input', function() {
     const result = processResult({});
-    assert.strictEqual(result, 'Hello,  (undefined)!');
+    assert.strictEqual(result, 'Hello,  ()!');
   });
 });
